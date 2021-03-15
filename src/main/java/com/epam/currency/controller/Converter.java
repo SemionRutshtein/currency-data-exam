@@ -9,40 +9,29 @@ import lombok.NonNull;
 import lombok.SneakyThrows;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /**
  * @author Semion Rutshtein
  * @version 1.0
- * @comment:
+ * @comment: Method to convert Json from string to dto models
  */
 public class Converter {
         public static Map<BaseCurrency, List<Rate>> convert (@NonNull String json) {
-
-
-
             JsonElement jsonTree =JsonParser.parseString(json);
             JsonElement base = null;
             JsonElement date = null;
+            String baseCurrent = null;
             List<Rate> ratesList = new ArrayList<>();
             if(jsonTree.isJsonObject()){
                 JsonObject jsonObject = jsonTree.getAsJsonObject();
 
                 JsonElement rates = jsonObject.get("rates");
-
                 base = jsonObject.get("base");
-
-
                 date = jsonObject.get("date");
 
-
                 if(rates.isJsonObject()) {
-                    String baseCurrent = base.getAsString();
-
-
+                    baseCurrent = base.getAsString();
                     JsonObject ratesObject = rates.getAsJsonObject();
                     Set<String> currencies = ratesObject.keySet();
                     for (String str: currencies) {
@@ -51,15 +40,10 @@ public class Converter {
 
                         ratesList.add(new Rate(asDouble, str, null));
                     }
-
-
                 }
-//
-
-
             }
 
-            BaseCurrency baseCurrency = new BaseCurrency(base.getAsString(),getCurrentDate(date.getAsString()) );
+            BaseCurrency baseCurrency = new BaseCurrency(baseCurrent,getCurrentDate(date.getAsString()) );
 
             Map<BaseCurrency, List<Rate>> pojos =  new HashMap<>();
             pojos.put(baseCurrency, ratesList);

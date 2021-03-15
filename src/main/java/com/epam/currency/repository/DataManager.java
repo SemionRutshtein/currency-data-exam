@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * @author Semion Rutshtein
  * @version 1.0
- * @comment:
+ * @comment: Repository class for saving data into tables
  */
 
 @Component

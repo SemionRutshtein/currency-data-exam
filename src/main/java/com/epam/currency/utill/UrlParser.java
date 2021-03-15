@@ -11,7 +11,7 @@ import java.net.URL;
 /**
  * @author Semion Rutshtein
  * @version 1.0
- * @comment:
+ * @comment: Class for parsing url in string
  */
 public class UrlParser {
 

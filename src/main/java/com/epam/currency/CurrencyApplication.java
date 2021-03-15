@@ -19,10 +19,8 @@ import java.util.Set;
 
 @SpringBootApplication
 public class CurrencyApplication implements CommandLineRunner {
-
     @Autowired
     private DataManager dataManager;
-
 
     public static void main(String[] args) {
         ConfigurableApplicationContext ctx = SpringApplication.run(CurrencyApplication.class, args);
@@ -44,16 +42,13 @@ public class CurrencyApplication implements CommandLineRunner {
         List<Map.Entry<BaseCurrency, List<Rate>>> list = new ArrayList(entries);
         Map.Entry<BaseCurrency, List<Rate>> first = list.get(0);
 
-
         dataManager.addRate(first.getKey(),  first.getValue());
 
-//        List<Rate> rates =  new ArrayList<>();
+//       List<Rate> rates =  new ArrayList<>();
 //       rates.add(new Rate(1.2D, "HKD", null));
 //       rates.add(new Rate(1.23D, "HKD", null));
 //       rates.add(new Rate(1.43D, "ISK", null));
-//        dataManager.addRate(new BaseCurrency("USD", System.currentTimeMillis()), rates);
-
-
+//       dataManager.addRate(new BaseCurrency("USD", System.currentTimeMillis()), rates);
 
         dataManager.closeConnection();
 

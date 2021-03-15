@@ -1,14 +1,11 @@
 package com.epam.currency.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 /**
  * @author Semion Rutshtein
  * @version 1.0
- * @comment: Entity class for base currency
+ * @comment: Entity class our base currency
  */
 
 @Getter
